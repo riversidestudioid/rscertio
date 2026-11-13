@@ -64,7 +64,7 @@ export function EditorStep({ template, validNames, placement, onChange, onReset 
             <Ruler className="size-3.5" aria-hidden /> Uji nama terpanjang
           </button>
         </div>
-        <p className="mt-3 text-xs text-slate">
+        <p className="mt-3 text-xs text-navy/65">
           Seret nama untuk memindahkan, atau fokuskan lalu gunakan tombol panah (Shift = lompat lebih jauh).
           Tahan Alt untuk menonaktifkan magnet tengah.
         </p>

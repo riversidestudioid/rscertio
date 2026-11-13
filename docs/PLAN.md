@@ -26,7 +26,7 @@ type NamePlacement = { x: number; y: number; maxWidth: number } & TextStyle; // 
 3. **Input nama** (selesai) — textarea, paste, CSV/XLSX, validasi, edit/hapus, hitung nama valid.
 4. **Editor** (selesai) — preview, drag posisi, font/ukuran/warna/rata teks, kecocokan preview↔PDF.
 5. **Generate** (selesai) — pdf-lib, progres, unduh PDF/ZIP, opsional PDF gabungan, nama file aman & unik.
-6. **QA & deploy** — uji, lint/tsc/build, responsif; GitHub push & Vercel **setelah persetujuan**.
+6. **QA & deploy** (QA selesai; deploy menunggu persetujuan) — uji, lint/tsc/build, responsif; GitHub push & Vercel **setelah persetujuan**.
 
 ## Risiko
 - Memori untuk ratusan PDF: proses berurutan, beri jeda ke event loop agar UI tidak membeku.

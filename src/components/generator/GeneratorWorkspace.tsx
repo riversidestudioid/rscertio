@@ -64,15 +64,15 @@ export function GeneratorWorkspace() {
               aria-current={i === step ? "step" : undefined}
               className={`grid size-7 place-items-center rounded-full font-semibold ${
                 i === step
-                  ? "bg-teal text-white"
+                  ? "bg-teal-dark text-white"
                   : i < step
                     ? "bg-navy text-cream"
-                    : "bg-navy/10 text-navy/50"
+                    : "bg-navy/10 text-navy/70"
               }`}
             >
               {i + 1}
             </span>
-            <span className={`hidden sm:inline ${i === step ? "font-medium" : "text-navy/50"}`}>
+            <span className={`hidden sm:inline ${i === step ? "font-medium" : "text-navy/70"}`}>
               {label}
             </span>
             {i < STEPS.length - 1 && <span className="h-px w-4 bg-navy/20 sm:w-8" />}

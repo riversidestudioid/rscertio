@@ -12,10 +12,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "Buat ratusan sertifikat PDF otomatis dari satu template dan daftar nama. Diproses di browser Anda, tanpa login. RSCertio by Riverside Studio.";
+
 export const metadata: Metadata = {
-  title: "RSCertio — Generator Sertifikat Massal Online",
-  description:
-    "Buat ratusan sertifikat PDF otomatis dari satu template dan daftar nama. Diproses di browser Anda, tanpa login. RSCertio by Riverside Studio.",
+  title: { default: "RSCertio — Generator Sertifikat Massal Online", template: "%s" },
+  description,
+  applicationName: "RSCertio",
+  authors: [{ name: "Riverside Studio" }],
+  openGraph: {
+    title: "RSCertio — Generator Sertifikat Massal Online",
+    description,
+    siteName: "RSCertio",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

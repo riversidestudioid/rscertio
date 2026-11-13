@@ -33,12 +33,12 @@ export function TemplateGallery({ templates, selectedId, onSelect }: Props) {
                 />
               </div>
               <p className="mt-2 truncate px-1 text-sm font-medium">{t.name}</p>
-              <p className="px-1 text-xs text-slate">
+              <p className="px-1 text-xs text-navy/65">
                 {t.orientation === "portrait" ? "Portrait" : "Landscape"}
                 {t.source === "upload" ? " · Upload" : ""}
               </p>
               {selected && (
-                <span className="absolute right-3 top-3 grid size-6 place-items-center rounded-full bg-teal text-white">
+                <span className="absolute right-3 top-3 grid size-6 place-items-center rounded-full bg-teal-dark text-white">
                   <Check className="size-4" aria-hidden />
                 </span>
               )}

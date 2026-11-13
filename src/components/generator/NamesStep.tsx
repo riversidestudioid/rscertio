@@ -119,25 +119,25 @@ export function NamesStep({ names, onChange }: Props) {
             type="button"
             onClick={handleAddDraft}
             disabled={draft.trim() === ""}
-            className="mt-2 inline-flex items-center gap-2 rounded-full bg-teal px-5 py-2 text-sm font-medium text-white transition hover:bg-teal/90 disabled:cursor-not-allowed disabled:opacity-40"
+            className="mt-2 inline-flex items-center gap-2 rounded-full bg-teal-dark px-5 py-2 text-sm font-medium text-white transition hover:bg-teal-dark/90 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <Plus className="size-4" aria-hidden /> Tambahkan
           </button>
         </div>
 
-        <div className="flex items-center gap-3 text-xs text-slate">
+        <div className="flex items-center gap-3 text-xs text-navy/65">
           <span className="h-px flex-1 bg-navy/10" /> atau <span className="h-px flex-1 bg-navy/10" />
         </div>
 
         <label
-          className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-navy/20 bg-white px-4 py-5 text-sm font-medium transition hover:border-teal ${
+          className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-navy/20 bg-white px-4 py-5 text-sm font-medium transition focus-within:ring-2 focus-within:ring-teal hover:border-teal ${
             importing ? "pointer-events-none opacity-60" : ""
           }`}
         >
           {importing ? (
-            <Loader2 className="size-5 animate-spin text-teal" aria-hidden />
+            <Loader2 className="size-5 animate-spin text-teal-dark" aria-hidden />
           ) : (
-            <FileUp className="size-5 text-teal" aria-hidden />
+            <FileUp className="size-5 text-teal-dark" aria-hidden />
           )}
           {importing ? "Membaca file…" : "Impor CSV, Excel (.xlsx), atau TXT"}
           <input
@@ -149,7 +149,7 @@ export function NamesStep({ names, onChange }: Props) {
             onChange={(e) => void handleFile(e.target.files?.[0])}
           />
         </label>
-        <p className="text-xs text-slate">
+        <p className="text-xs text-navy/65">
           Maks 5 MB. Jika ada kolom berjudul “Nama”, kolom itu dipakai; jika tidak, kolom pertama.
         </p>
 
@@ -157,7 +157,7 @@ export function NamesStep({ names, onChange }: Props) {
           <p
             role={notice.kind === "error" ? "alert" : "status"}
             className={`rounded-lg px-3 py-2 text-sm ${
-              notice.kind === "error" ? "bg-red-50 text-red-700" : "bg-teal/10 text-teal"
+              notice.kind === "error" ? "bg-red-50 text-red-700" : "bg-teal/10 text-teal-dark"
             }`}
           >
             {notice.text}
@@ -168,7 +168,7 @@ export function NamesStep({ names, onChange }: Props) {
       <div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Users className="size-5 text-teal" aria-hidden />
+            <Users className="size-5 text-teal-dark" aria-hidden />
             <p className="font-semibold" aria-live="polite">
               {validCount} nama valid
             </p>
@@ -221,7 +221,7 @@ export function NamesStep({ names, onChange }: Props) {
         </div>
 
         {names.length === 0 ? (
-          <p className="mt-4 rounded-xl border border-dashed border-navy/15 bg-white px-4 py-10 text-center text-sm text-slate">
+          <p className="mt-4 rounded-xl border border-dashed border-navy/15 bg-white px-4 py-10 text-center text-sm text-navy/65">
             Belum ada nama. Tempel daftar nama atau impor dari file.
           </p>
         ) : (
@@ -232,7 +232,7 @@ export function NamesStep({ names, onChange }: Props) {
               const long = !issue && isLongName(n.value);
               return (
                 <li key={n.id} className="flex items-center gap-2">
-                  <span className="w-8 shrink-0 text-right text-xs text-slate">{i + 1}</span>
+                  <span className="w-8 shrink-0 text-right text-xs text-navy/65">{i + 1}</span>
                   <div className="min-w-0 flex-1">
                     <input
                       value={n.value}
@@ -249,7 +249,7 @@ export function NamesStep({ names, onChange }: Props) {
                     {(issue || dup || long) && (
                       <p
                         className={`mt-0.5 flex items-center gap-1 px-1 text-xs ${
-                          issue ? "text-red-700" : "text-navy/60"
+                          issue ? "text-red-700" : "text-navy/70"
                         }`}
                       >
                         <AlertTriangle className="size-3" aria-hidden />
@@ -264,7 +264,7 @@ export function NamesStep({ names, onChange }: Props) {
                     type="button"
                     onClick={() => onChange(names.filter((x) => x.id !== n.id))}
                     aria-label={`Hapus nama ${n.value || i + 1}`}
-                    className="grid size-8 shrink-0 place-items-center rounded-lg text-slate transition hover:bg-red-50 hover:text-red-600"
+                    className="grid size-8 shrink-0 place-items-center rounded-lg text-navy/65 transition hover:bg-red-50 hover:text-red-600"
                   >
                     <Trash2 className="size-4" aria-hidden />
                   </button>

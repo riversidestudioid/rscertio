@@ -40,17 +40,17 @@ export function TemplateUpload({ onUploaded }: { onUploaded: (t: CertificateTemp
           setDragging(false);
           void handleFile(e.dataTransfer.files[0]);
         }}
-        className={`flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed px-4 py-8 text-center transition ${
+        className={`flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed px-4 py-8 text-center transition focus-within:ring-2 focus-within:ring-teal ${
           dragging ? "border-teal bg-teal/5" : "border-navy/20 bg-white hover:border-teal"
         }`}
       >
         {busy ? (
-          <Loader2 className="size-7 animate-spin text-teal" aria-hidden />
+          <Loader2 className="size-7 animate-spin text-teal-dark" aria-hidden />
         ) : (
-          <UploadCloud className="size-7 text-teal" aria-hidden />
+          <UploadCloud className="size-7 text-teal-dark" aria-hidden />
         )}
         <span className="font-medium">{busy ? "Memeriksa gambar…" : "Unggah template Anda"}</span>
-        <span className="text-xs text-slate">PNG atau JPG · maks 10 MB · min 600px</span>
+        <span className="text-xs text-navy/65">PNG atau JPG · maks 10 MB · min 600px</span>
         <input
           ref={inputRef}
           type="file"

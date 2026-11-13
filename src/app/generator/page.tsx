@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
-  title: "Generator — RSCertio",
+  title: "Generator Sertifikat — RSCertio",
 };
 
 export default function GeneratorPage() {

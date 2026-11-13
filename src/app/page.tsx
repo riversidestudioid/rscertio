@@ -36,7 +36,7 @@ export default function Home() {
             Generator sertifikat online otomatis
           </p>
           <h1 className="animate-fade-up mx-auto mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-            Buat Sertifikat Massal dalam <span className="text-teal">Sekali Klik</span>
+            Buat Sertifikat Massal dalam <span className="text-teal-dark">Sekali Klik</span>
           </h1>
           <p className="animate-fade-up mx-auto mt-5 max-w-xl text-lg text-navy/70">
             Punya 150 peserta? Pilih satu template, masukkan daftar nama, dan RSCertio membuat
@@ -54,7 +54,7 @@ export default function Home() {
           <ul className="mt-8 flex flex-col items-center justify-center gap-3 text-sm text-navy/70 sm:flex-row sm:gap-8">
             {perks.map(({ icon: Icon, text }) => (
               <li key={text} className="flex items-center gap-2">
-                <Icon className="size-4 text-teal" aria-hidden />
+                <Icon className="size-4 text-teal-dark" aria-hidden />
                 {text}
               </li>
             ))}
@@ -71,10 +71,10 @@ export default function Home() {
                   className="rounded-2xl border border-navy/10 bg-cream p-7 transition hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="grid size-12 place-items-center rounded-xl bg-teal/10 text-teal">
+                    <span className="grid size-12 place-items-center rounded-xl bg-teal/10 text-teal-dark">
                       <Icon className="size-6" aria-hidden />
                     </span>
-                    <span className="text-4xl font-bold text-gold">{i + 1}</span>
+                    <span className="text-4xl font-bold text-gold" aria-hidden>{i + 1}</span>
                   </div>
                   <h3 className="mt-5 text-lg font-semibold">{title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-navy/70">{text}</p>

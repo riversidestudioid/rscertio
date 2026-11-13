@@ -64,7 +64,7 @@ export function StyleControls({ template, placement, onChange, onReset }: Props)
           <label htmlFor="size" className={label}>
             Ukuran
           </label>
-          <span className="text-xs text-slate">{pt} pt</span>
+          <span className="text-xs text-navy/65">{pt} pt</span>
         </div>
         <input
           id="size"
@@ -82,7 +82,7 @@ export function StyleControls({ template, placement, onChange, onReset }: Props)
           <label htmlFor="boxw" className={label}>
             Lebar maksimal teks
           </label>
-          <span className="text-xs text-slate">{Math.round(placement.maxWidth * 100)}%</span>
+          <span className="text-xs text-navy/65">{Math.round(placement.maxWidth * 100)}%</span>
         </div>
         <input
           id="boxw"
@@ -93,7 +93,7 @@ export function StyleControls({ template, placement, onChange, onReset }: Props)
           onChange={(e) => onChange({ maxWidth: Number(e.target.value) / 100 })}
           className="mt-2 w-full accent-teal"
         />
-        <p className="mt-1 text-xs text-slate">Nama yang lebih lebar dikecilkan otomatis agar muat.</p>
+        <p className="mt-1 text-xs text-navy/65">Nama yang lebih lebar dikecilkan otomatis agar muat.</p>
       </div>
 
       <div>
@@ -152,7 +152,7 @@ export function StyleControls({ template, placement, onChange, onReset }: Props)
               aria-pressed={placement.align === value}
               onClick={() => onChange({ align: value })}
               className={`grid size-9 place-items-center rounded-md transition ${
-                placement.align === value ? "bg-teal text-white" : "hover:bg-navy/5"
+                placement.align === value ? "bg-teal-dark text-white" : "hover:bg-navy/5"
               }`}
             >
               <Icon className="size-4" aria-hidden />

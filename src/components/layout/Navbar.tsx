@@ -10,7 +10,7 @@ export function Navbar() {
             <BadgeCheck className="size-5" aria-hidden />
           </span>
           <span className="text-lg">
-            RS<span className="text-teal">Certio</span>
+            RS<span className="text-teal-dark">Certio</span>
           </span>
         </Link>
         <div className="flex items-center gap-6 text-sm">
@@ -19,7 +19,7 @@ export function Navbar() {
           </Link>
           <Link
             href="/generator"
-            className="rounded-full bg-teal px-5 py-2 font-medium text-white transition hover:bg-teal/90"
+            className="rounded-full bg-teal-dark px-5 py-2 font-medium text-white transition hover:bg-teal-dark/90"
           >
             Mulai Membuat
           </Link>

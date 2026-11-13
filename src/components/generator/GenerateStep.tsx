@@ -29,7 +29,7 @@ interface GlyphIssue {
 }
 
 const btnPrimary =
-  "inline-flex items-center gap-2 rounded-full bg-teal px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal/90 disabled:cursor-not-allowed disabled:opacity-40";
+  "inline-flex items-center gap-2 rounded-full bg-teal-dark px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-dark/90 disabled:cursor-not-allowed disabled:opacity-40";
 const btnGhost =
   "inline-flex items-center gap-2 rounded-full border border-navy/15 px-4 py-2 text-sm font-medium transition hover:bg-navy/5 disabled:opacity-40";
 
@@ -127,19 +127,19 @@ export function GenerateStep({ template, placement, validNames }: Props) {
     <div className="mx-auto max-w-2xl">
       <dl className="grid grid-cols-2 gap-3 rounded-2xl border border-navy/10 bg-white p-5 text-sm sm:grid-cols-4">
         <div>
-          <dt className="text-slate">Template</dt>
+          <dt className="text-navy/65">Template</dt>
           <dd className="mt-0.5 truncate font-medium">{template.name}</dd>
         </div>
         <div>
-          <dt className="text-slate">Peserta</dt>
+          <dt className="text-navy/65">Peserta</dt>
           <dd className="mt-0.5 font-medium">{jobCount} sertifikat</dd>
         </div>
         <div>
-          <dt className="text-slate">Font</dt>
+          <dt className="text-navy/65">Font</dt>
           <dd className="mt-0.5 truncate font-medium">{FONTS[placement.fontId].label}</dd>
         </div>
         <div>
-          <dt className="text-slate">Ukuran</dt>
+          <dt className="text-navy/65">Ukuran</dt>
           <dd className="mt-0.5 font-medium">{template.orientation === "portrait" ? "A4 Portrait" : "A4 Landscape"}</dd>
         </div>
       </dl>
@@ -153,11 +153,11 @@ export function GenerateStep({ template, placement, validNames }: Props) {
           <ul className="mt-2 max-h-32 space-y-1 overflow-y-auto text-navy/80">
             {issues.map((i) => (
               <li key={i.index}>
-                {i.name} <span className="text-slate">— tidak didukung: {i.chars.join(" ")}</span>
+                {i.name} <span className="text-navy/65">— tidak didukung: {i.chars.join(" ")}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-2 text-xs text-navy/60">
+          <p className="mt-2 text-xs text-navy/70">
             Kembali ke langkah Nama untuk memperbaikinya, atau lanjutkan tanpa nama tersebut.
           </p>
         </div>
@@ -175,7 +175,7 @@ export function GenerateStep({ template, placement, validNames }: Props) {
             />
             <span>
               Buat juga satu PDF gabungan
-              <span className="block text-xs text-slate">Semua peserta dalam satu file, satu halaman per orang.</span>
+              <span className="block text-xs text-navy/65">Semua peserta dalam satu file, satu halaman per orang.</span>
             </span>
           </label>
 
@@ -225,7 +225,7 @@ export function GenerateStep({ template, placement, validNames }: Props) {
       {status.kind === "done" && (
         <div className="mt-6">
           <p className="flex items-center gap-2 text-lg font-semibold">
-            <CheckCircle2 className="size-6 text-teal" aria-hidden />
+            <CheckCircle2 className="size-6 text-teal-dark" aria-hidden />
             {status.result.generated} sertifikat berhasil dibuat
           </p>
 
@@ -254,7 +254,7 @@ export function GenerateStep({ template, placement, validNames }: Props) {
                 <span className="flex items-center gap-2">
                   <FileText className="size-4" aria-hidden /> sertifikat-gabungan.pdf
                 </span>
-                <span className="text-xs text-slate">{(status.result.merged.size / 1024 / 1024).toFixed(1)} MB</span>
+                <span className="text-xs text-navy/65">{(status.result.merged.size / 1024 / 1024).toFixed(1)} MB</span>
               </button>
             )}
           </div>
@@ -264,7 +264,7 @@ export function GenerateStep({ template, placement, validNames }: Props) {
             {status.jobs.map((job) => (
               <li key={job.index} className="flex items-center justify-between gap-3 px-3 py-2 text-sm">
                 <span className="min-w-0 truncate">
-                  <span className="mr-2 text-xs text-slate">{job.index + 1}</span>
+                  <span className="mr-2 text-xs text-navy/65">{job.index + 1}</span>
                   {job.name}
                 </span>
                 <button

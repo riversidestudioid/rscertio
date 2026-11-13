@@ -6,6 +6,8 @@
   --color-cream: #faf9f6;
   --color-gold: #e9b431;
   --color-slate: #929ba1;
+  /* Teal lebih gelap untuk teks & tombol berlatar putih agar lolos kontras WCAG AA (≥4.5:1). */
+  --color-teal-dark: #0f6f69;
   --color-background: var(--color-cream);
   --color-foreground: var(--color-navy);
   --font-sans: var(--font-geist-sans);
