@@ -44,4 +44,8 @@ Deep Navy `#0C222D` · Teal `#168F88` · Cream `#FAF9F6` · Gold `#E9B431` · Gr
 
 ## Status
 
-Fase 1–3 selesai (setup, template, input nama). Lihat [docs/PLAN.md](docs/PLAN.md) untuk roadmap.
+Fase 1–4 selesai (setup, template, input nama, editor posisi). Lihat [docs/PLAN.md](docs/PLAN.md) untuk roadmap.
+
+## Font
+
+Font sertifikat (Playfair Display, Montserrat, Great Vibes, Lora) berasal dari [Fontsource](https://fontsource.org) dan berlisensi SIL Open Font License 1.1. File `.woff` (subset Latin) ada di `public/fonts/` dan dipakai bersamaan oleh preview (CSS) dan generator PDF (pdf-lib + fontkit) supaya hasilnya identik. Karakter di luar subset Latin akan ditangani di fase generate.

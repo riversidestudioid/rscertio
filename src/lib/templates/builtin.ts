@@ -14,7 +14,8 @@ function make(
     height: landscape ? 1131 : 1600,
     orientation,
     source: "builtin",
-    defaultNamePosition: { x: 0.5, y: landscape ? 0.52 : 0.5 },
+    // Tepat di atas garis nama pada template bawaan.
+    defaultNamePosition: { x: 0.5, y: landscape ? 0.5 : 0.485 },
   };
 }
 

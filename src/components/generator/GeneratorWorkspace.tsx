@@ -5,6 +5,10 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { BUILTIN_TEMPLATES } from "@/lib/templates/builtin";
 import { validateName, type NameEntry } from "@/lib/names/parse";
 import type { CertificateTemplate } from "@/types/certificate";
+import { defaultPlacement } from "@/lib/certificate/layout";
+import { normalizeName } from "@/lib/names/parse";
+import type { NamePlacement } from "@/types/certificate";
+import { EditorStep } from "./EditorStep";
 import { NamesStep } from "./NamesStep";
 import { TemplateGallery } from "./TemplateGallery";
 import { TemplatePreview } from "./TemplatePreview";
@@ -17,6 +21,7 @@ export function GeneratorWorkspace() {
   const [uploaded, setUploaded] = useState<CertificateTemplate[]>([]);
   const [selected, setSelected] = useState<CertificateTemplate>(BUILTIN_TEMPLATES[0]);
   const [names, setNames] = useState<NameEntry[]>([]);
+  const [placement, setPlacement] = useState<NamePlacement>(() => defaultPlacement(BUILTIN_TEMPLATES[0]));
   const uploadedRef = useRef<CertificateTemplate[]>([]);
 
   useEffect(() => {
@@ -35,9 +40,17 @@ export function GeneratorWorkspace() {
       next.slice(3).forEach((old) => URL.revokeObjectURL(old.src));
       return next.slice(0, 3);
     });
-    setSelected(t);
+    selectTemplate(t);
   }
 
+  function selectTemplate(t: CertificateTemplate) {
+    setSelected(t);
+    // Posisi awal mengikuti template; gaya (font, warna, dst.) dipertahankan.
+    const d = defaultPlacement(t);
+    setPlacement((p) => ({ ...p, x: d.x, y: d.y, fontSizeRatio: d.fontSizeRatio }));
+  }
+
+  const validNames = names.filter((n) => validateName(n.value) === null).map((n) => normalizeName(n.value));
   const validCount = names.filter((n) => validateName(n.value) === null).length;
   const all = [...uploaded, ...BUILTIN_TEMPLATES];
 
@@ -75,7 +88,7 @@ export function GeneratorWorkspace() {
           <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
             <div className="space-y-6">
               <TemplateUpload onUploaded={handleUploaded} />
-              <TemplateGallery templates={all} selectedId={selected.id} onSelect={setSelected} />
+              <TemplateGallery templates={all} selectedId={selected.id} onSelect={selectTemplate} />
             </div>
             <div className="lg:sticky lg:top-24 lg:self-start">
               <TemplatePreview template={selected} />
@@ -97,9 +110,27 @@ export function GeneratorWorkspace() {
         </>
       )}
 
-      {step >= 2 && (
+      {step === 2 && (
+        <>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight">Atur Posisi Nama</h1>
+          <p className="mt-2 max-w-xl text-navy/70">
+            Geser nama ke tempat yang diinginkan dan atur gayanya. Pratinjau memakai font yang sama dengan PDF.
+          </p>
+          <div className="mt-8">
+            <EditorStep
+              template={selected}
+              validNames={validNames}
+              placement={placement}
+              onChange={(patch) => setPlacement((p) => ({ ...p, ...patch }))}
+              onReset={() => setPlacement(defaultPlacement(selected))}
+            />
+          </div>
+        </>
+      )}
+
+      {step === 3 && (
         <div className="mt-10 rounded-2xl border border-dashed border-navy/20 bg-white p-10 text-center text-navy/70">
-          Editor posisi nama dan generate PDF hadir di fase berikutnya.
+          Generate PDF dan unduhan ZIP hadir di fase berikutnya.
         </div>
       )}
 
@@ -112,14 +143,14 @@ export function GeneratorWorkspace() {
         >
           <ArrowLeft className="size-4" aria-hidden /> Kembali
         </button>
-        {step < 2 && (
+        {step < 3 && (
           <button
             type="button"
             onClick={() => setStep((s) => s + 1)}
             disabled={step === 1 && validCount === 0}
             className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-2.5 text-sm font-semibold text-cream transition hover:bg-navy/90 disabled:cursor-not-allowed disabled:opacity-40"
           >
-            {step === 0 ? "Lanjut: Masukkan Nama" : `Lanjut dengan ${validCount} nama`}
+            {step === 0 ? "Lanjut: Masukkan Nama" : step === 1 ? `Lanjut dengan ${validCount} nama` : "Lanjut: Generate"}
             <ArrowRight className="size-4" aria-hidden />
           </button>
         )}

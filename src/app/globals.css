@@ -43,3 +43,25 @@ body {
     transition: none !important;
   }
 }
+
+/* Font sertifikat — file yang sama dipakai pdf-lib agar preview = PDF. */
+@font-face {
+  font-family: "RSC Playfair";
+  src: url("/fonts/playfair-display-latin-700-normal.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "RSC Montserrat";
+  src: url("/fonts/montserrat-latin-600-normal.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "RSC Great Vibes";
+  src: url("/fonts/great-vibes-latin-400-normal.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "RSC Lora";
+  src: url("/fonts/lora-latin-600-normal.woff") format("woff");
+  font-display: swap;
+}
