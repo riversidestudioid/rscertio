@@ -25,6 +25,7 @@ npm run dev        # http://localhost:3000
 | `npm run dev` | Server pengembangan |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | Generate tipe Next + `tsc --noEmit` |
+| `npm test` | Unit test parsing nama (node:test) |
 | `npm run build` | Build produksi |
 
 ## Struktur
@@ -43,4 +44,4 @@ Deep Navy `#0C222D` · Teal `#168F88` · Cream `#FAF9F6` · Gold `#E9B431` · Gr
 
 ## Status
 
-Fase 1 (setup & landing page) selesai. Lihat [docs/PLAN.md](docs/PLAN.md) untuk roadmap.
+Fase 1–3 selesai (setup, template, input nama). Lihat [docs/PLAN.md](docs/PLAN.md) untuk roadmap.

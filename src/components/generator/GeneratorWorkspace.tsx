@@ -1,15 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { BUILTIN_TEMPLATES } from "@/lib/templates/builtin";
+import { validateName, type NameEntry } from "@/lib/names/parse";
 import type { CertificateTemplate } from "@/types/certificate";
+import { NamesStep } from "./NamesStep";
 import { TemplateGallery } from "./TemplateGallery";
 import { TemplatePreview } from "./TemplatePreview";
 import { TemplateUpload } from "./TemplateUpload";
 
+const STEPS = ["Template", "Nama", "Posisi", "Generate"];
+
 export function GeneratorWorkspace() {
+  const [step, setStep] = useState(0);
   const [uploaded, setUploaded] = useState<CertificateTemplate[]>([]);
   const [selected, setSelected] = useState<CertificateTemplate>(BUILTIN_TEMPLATES[0]);
+  const [names, setNames] = useState<NameEntry[]>([]);
   const uploadedRef = useRef<CertificateTemplate[]>([]);
 
   useEffect(() => {
@@ -31,24 +38,91 @@ export function GeneratorWorkspace() {
     setSelected(t);
   }
 
+  const validCount = names.filter((n) => validateName(n.value) === null).length;
   const all = [...uploaded, ...BUILTIN_TEMPLATES];
 
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-5 py-10">
-      <p className="text-sm font-medium text-teal">Langkah 1 dari 4</p>
-      <h1 className="mt-1 text-3xl font-bold tracking-tight">Pilih Template</h1>
-      <p className="mt-2 max-w-xl text-navy/70">
-        Pilih template bawaan atau unggah desain sertifikat Anda sendiri.
-      </p>
+      <ol className="flex items-center gap-2 text-xs sm:text-sm" aria-label="Langkah">
+        {STEPS.map((label, i) => (
+          <li key={label} className="flex items-center gap-2">
+            <span
+              aria-current={i === step ? "step" : undefined}
+              className={`grid size-7 place-items-center rounded-full font-semibold ${
+                i === step
+                  ? "bg-teal text-white"
+                  : i < step
+                    ? "bg-navy text-cream"
+                    : "bg-navy/10 text-navy/50"
+              }`}
+            >
+              {i + 1}
+            </span>
+            <span className={`hidden sm:inline ${i === step ? "font-medium" : "text-navy/50"}`}>
+              {label}
+            </span>
+            {i < STEPS.length - 1 && <span className="h-px w-4 bg-navy/20 sm:w-8" />}
+          </li>
+        ))}
+      </ol>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
-        <div className="space-y-6">
-          <TemplateUpload onUploaded={handleUploaded} />
-          <TemplateGallery templates={all} selectedId={selected.id} onSelect={setSelected} />
+      {step === 0 && (
+        <>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight">Pilih Template</h1>
+          <p className="mt-2 max-w-xl text-navy/70">
+            Pilih template bawaan atau unggah desain sertifikat Anda sendiri.
+          </p>
+          <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+            <div className="space-y-6">
+              <TemplateUpload onUploaded={handleUploaded} />
+              <TemplateGallery templates={all} selectedId={selected.id} onSelect={setSelected} />
+            </div>
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <TemplatePreview template={selected} />
+            </div>
+          </div>
+        </>
+      )}
+
+      {step === 1 && (
+        <>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight">Masukkan Daftar Nama</h1>
+          <p className="mt-2 max-w-xl text-navy/70">
+            Tempel, ketik, atau impor nama peserta. Anda bisa mengedit dan menghapus nama sebelum
+            lanjut.
+          </p>
+          <div className="mt-8">
+            <NamesStep names={names} onChange={setNames} />
+          </div>
+        </>
+      )}
+
+      {step >= 2 && (
+        <div className="mt-10 rounded-2xl border border-dashed border-navy/20 bg-white p-10 text-center text-navy/70">
+          Editor posisi nama dan generate PDF hadir di fase berikutnya.
         </div>
-        <div className="lg:sticky lg:top-24 lg:self-start">
-          <TemplatePreview template={selected} />
-        </div>
+      )}
+
+      <div className="mt-10 flex items-center justify-between border-t border-navy/10 pt-6">
+        <button
+          type="button"
+          onClick={() => setStep((s) => Math.max(0, s - 1))}
+          disabled={step === 0}
+          className="inline-flex items-center gap-2 rounded-full border border-navy/15 px-5 py-2.5 text-sm font-medium transition hover:bg-navy/5 disabled:invisible"
+        >
+          <ArrowLeft className="size-4" aria-hidden /> Kembali
+        </button>
+        {step < 2 && (
+          <button
+            type="button"
+            onClick={() => setStep((s) => s + 1)}
+            disabled={step === 1 && validCount === 0}
+            className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-2.5 text-sm font-semibold text-cream transition hover:bg-navy/90 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {step === 0 ? "Lanjut: Masukkan Nama" : `Lanjut dengan ${validCount} nama`}
+            <ArrowRight className="size-4" aria-hidden />
+          </button>
+        )}
       </div>
     </div>
   );
