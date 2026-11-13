@@ -25,7 +25,7 @@ type NamePlacement = { x: number; y: number; maxWidth: number } & TextStyle; // 
 2. **Template** (selesai) — galeri bawaan, upload PNG/JPG (validasi tipe/ukuran), preview, landscape/portrait.
 3. **Input nama** (selesai) — textarea, paste, CSV/XLSX, validasi, edit/hapus, hitung nama valid.
 4. **Editor** (selesai) — preview, drag posisi, font/ukuran/warna/rata teks, kecocokan preview↔PDF.
-5. **Generate** — pdf-lib, progres, unduh PDF/ZIP, opsional PDF gabungan, nama file aman & unik.
+5. **Generate** (selesai) — pdf-lib, progres, unduh PDF/ZIP, opsional PDF gabungan, nama file aman & unik.
 6. **QA & deploy** — uji, lint/tsc/build, responsif; GitHub push & Vercel **setelah persetujuan**.
 
 ## Risiko

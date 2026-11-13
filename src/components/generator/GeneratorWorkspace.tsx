@@ -9,6 +9,7 @@ import { defaultPlacement } from "@/lib/certificate/layout";
 import { normalizeName } from "@/lib/names/parse";
 import type { NamePlacement } from "@/types/certificate";
 import { EditorStep } from "./EditorStep";
+import { GenerateStep } from "./GenerateStep";
 import { NamesStep } from "./NamesStep";
 import { TemplateGallery } from "./TemplateGallery";
 import { TemplatePreview } from "./TemplatePreview";
@@ -129,9 +130,15 @@ export function GeneratorWorkspace() {
       )}
 
       {step === 3 && (
-        <div className="mt-10 rounded-2xl border border-dashed border-navy/20 bg-white p-10 text-center text-navy/70">
-          Generate PDF dan unduhan ZIP hadir di fase berikutnya.
-        </div>
+        <>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight">Generate Sertifikat</h1>
+          <p className="mt-2 max-w-xl text-navy/70">
+            Periksa ringkasan, lalu buat semua sertifikat sekaligus. Semua diproses di browser Anda.
+          </p>
+          <div className="mt-8">
+            <GenerateStep template={selected} placement={placement} validNames={validNames} />
+          </div>
+        </>
       )}
 
       <div className="mt-10 flex items-center justify-between border-t border-navy/10 pt-6">
