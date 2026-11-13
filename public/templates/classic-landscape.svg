@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1131" viewBox="0 0 1600 1131"><rect width="1600" height="1131" fill="#FAF9F6"/><rect x="40" y="40" width="1520" height="1051" fill="none" stroke="#0C222D" stroke-width="10"/>
+<rect x="64" y="64" width="1472" height="1003" fill="none" stroke="#E9B431" stroke-width="3"/><circle cx="64" cy="64" r="12" fill="#E9B431"/><circle cx="1536" cy="64" r="12" fill="#E9B431"/><circle cx="64" cy="1067" r="12" fill="#E9B431"/><circle cx="1536" cy="1067" r="12" fill="#E9B431"/>
+<text x="800" y="230" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="86" font-weight="700" letter-spacing="10" fill="#0C222D">SERTIFIKAT</text>
+<text x="800" y="278" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" letter-spacing="8" fill="#168F88">PENGHARGAAN</text>
+<text x="800" y="478" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-style="italic" fill="#929BA1">Diberikan kepada</text>
+<line x1="280" y1="612" x2="1320" y2="612" stroke="#E9B431" stroke-width="3"/>
+<text x="800" y="688" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#0C222D" opacity=".75">atas partisipasi dan kontribusinya dalam kegiatan ini.</text>
+<line x1="680" y1="981" x2="920" y2="981" stroke="#0C222D" stroke-width="2"/>
+<text x="800" y="1019" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#929BA1">Penyelenggara</text></svg>
